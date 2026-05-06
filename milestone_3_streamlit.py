@@ -269,20 +269,20 @@ with col1:
                 answer = state["messages"][-1].content
             
 # Extract sources from tool results directly
-        pdf_sources_found = []
-        web_sources_found = []
-        for msg in state["messages"]:
-            if hasattr(msg, 'content') and isinstance(msg.content, str):
-                # Extract PDFs - look for [Source: filename.pdf] pattern
-                pdfs = re.findall(r'\[Source:\s*([^\]]+\.pdf)\]', msg.content)
-                pdf_sources_found.extend(pdfs)
-                # Extract URLs from tool results
-                urls = re.findall(r'(?:URL:\s*)?(https?://[^\s\n]+)', msg.content)
-                web_sources_found.extend(urls)
+                pdf_sources_found = []
+                web_sources_found = []
+                for msg in state["messages"]:
+                    if hasattr(msg, 'content') and isinstance(msg.content, str):
+                        # Extract PDFs - look for [Source: filename.pdf] pattern
+                        pdfs = re.findall(r'\[Source:\s*([^\]]+\.pdf)\]', msg.content)
+                        pdf_sources_found.extend(pdfs)
+                        # Extract URLs from tool results
+                        urls = re.findall(r'(?:URL:\s*)?(https?://[^\s\n]+)', msg.content)
+                        web_sources_found.extend(urls)
         
-        # Append sources to answer if found
-        if pdf_sources_found:
-            answer += f"\n\nPDF Sources: {', '.join(set(pdf_sources_found))}"
+                # Append sources to answer if found
+                if pdf_sources_found:
+                    answer += f"\n\nPDF Sources: {', '.join(set(pdf_sources_found))}"
               
                 # Detect tools used
                 tools_used = []
