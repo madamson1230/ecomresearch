@@ -110,17 +110,8 @@ def search_web(query: str, max_results: int = 5):
         return f"Error performing web search: {str(e)}"
 
 system_prompt = (
-    "You are a research assistant.\n"
-    "Rules:\n"
-    "You are a research assistant.\n"
-    "1) ALWAYS call search_corpus first.\n"
-    "2) Call search_web only if you need current 2024-2026 data.\n"
-    "3) Answer in plain paragraphs.\n"
-    "4) CRITICAL: At the very end of your answer, add a new line that says 'Sources: ' and then list EVERY filename.pdf you saw in [Source: filename.pdf] tags from the tool results.\n"
-    "5) Stop after answering - don't call tools repeatedly."
-    
-    "For factual questions, provide a clear explanation based on retrieved information.\n"
-    "For strategic questions, identify the decision context, compare options using key factors, explain trade-offs, and provide a recommendation."
+    "Research assistant. Call search_corpus first, then search_web if needed for current data. "
+    "Answer in paragraphs. At the end write 'PDF Sources: ' and list any .pdf filenames from the tool results."
 ) #I opted to create a system prompt after I really struggled to get the agent to call my corpus. The ssytem prompt will be used in content for messages
 
 chat = ChatOpenAI(
