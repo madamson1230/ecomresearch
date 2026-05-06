@@ -261,8 +261,12 @@ with col1:
         
         # Run agent
         with st.spinner("Researching..."):
-            state = graph.invoke(messages)
-            answer = state["messages"][-1].content
+            try:
+                state = graph.invoke(
+                    messages,
+                    {"recursion_limit": 10, "max_execution_time": 60}
+                )
+                answer = state["messages"][-1].content
                         
             # Detect tools used
             tools_used = []
