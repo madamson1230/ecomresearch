@@ -4,6 +4,6 @@ langchain-openai
 langchain-core
 langgraph
 qdrant-client
-tavily-py
+tavily
 python-dotenv
 openai
