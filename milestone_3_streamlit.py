@@ -3,11 +3,21 @@ from Milestone_3_agent import graph, SystemMessage, HumanMessage, system_prompt
 from datetime import datetime
 
 try:
-    from Milestone_3_agent import qdrant_client
-    test = qdrant_client.get_collection("ecommerce_research")
-    st.sidebar.success(f"✅ Qdrant connected: {test.vectors_count} vectors")
+    import os
+    from qdrant_client import QdrantClient
+    
+    url = os.getenv("QDRANT_URL")
+    key = os.getenv("QDRANT_API_KEY")
+    
+    st.sidebar.write(f"URL: {url}")
+    st.sidebar.write(f"Key exists: {bool(key)}")
+    st.sidebar.write(f"Key length: {len(key) if key else 0}")
+    
+    client = QdrantClient(url=url, api_key=key)
+    test = client.get_collection("ecommerce_research")
+    st.sidebar.success(f"✅ Connected: {test.vectors_count} vectors")
 except Exception as e:
-    st.sidebar.error(f"❌ Qdrant error: {str(e)}")
+    st.sidebar.error(f"❌ Error: {str(e)}")
 
 # Title map for source display
 title_map = {
