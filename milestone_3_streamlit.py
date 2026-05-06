@@ -260,8 +260,12 @@ with col1:
         
         # Run agent
         with st.spinner("Researching..."):
-            state = graph.invoke(messages)
-            answer = state["messages"][-1].content
+            try:
+                state = graph.invoke(messages)
+                answer = state["messages"][-1].content
+            except Exception as e:
+                st.error(f"Error: {str(e)}")
+                st.stop()
                         
             # Detect tools used
             tools_used = []
