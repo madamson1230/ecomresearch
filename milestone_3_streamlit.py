@@ -2,6 +2,13 @@ import streamlit as st
 from Milestone_3_agent import graph, SystemMessage, HumanMessage, system_prompt
 from datetime import datetime
 
+try:
+    from Milestone_3_agent import qdrant_client
+    test = qdrant_client.get_collection("ecommerce_research")
+    st.sidebar.success(f"✅ Qdrant connected: {test.vectors_count} vectors")
+except Exception as e:
+    st.sidebar.error(f"❌ Qdrant error: {str(e)}")
+
 # Title map for source display
 title_map = {
     # USPTO/Trademark Documents
