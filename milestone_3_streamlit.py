@@ -2,22 +2,6 @@ import streamlit as st
 from Milestone_3_agent import graph, SystemMessage, HumanMessage, system_prompt
 from datetime import datetime
 
-try:
-    import os
-    from qdrant_client import QdrantClient
-    
-    url = os.getenv("QDRANT_URL")
-    key = os.getenv("QDRANT_API_KEY")
-    
-    st.sidebar.write(f"URL: {url}")
-    st.sidebar.write(f"Key exists: {bool(key)}")
-    st.sidebar.write(f"Key length: {len(key) if key else 0}")
-    
-    client = QdrantClient(url=url, api_key=key)
-    test = client.get_collection("ecommerce_research")
-    st.sidebar.success(f"✅ Connected: {test.points_count} vectors")
-except Exception as e:
-    st.sidebar.error(f"❌ Error: {str(e)}")
 
 # Title map for source display
 title_map = {
@@ -278,16 +262,8 @@ with col1:
         # Run agent
         with st.spinner("Researching..."):
             try:
-                st.write("DEBUG: Starting agent...")
                 state = graph.invoke(messages)
-                st.write("DEBUG: Agent finished")
                 answer = state["messages"][-1].content
-                st.write("DEBUG: Got answer")
-            except Exception as e:
-                st.error(f"Error: {type(e).__name__}: {str(e)}")
-                import traceback
-                st.code(traceback.format_exc())
-                st.stop()
                         
             # Detect tools used
             tools_used = []
