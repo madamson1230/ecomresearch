@@ -261,9 +261,8 @@ with col1:
         
         # Run agent
         with st.spinner("Researching..."):
-            try:
-                state = graph.invoke(messages)
-                answer = state["messages"][-1].content
+            state = graph.invoke(messages)
+            answer = state["messages"][-1].content
                         
             # Detect tools used
             tools_used = []
