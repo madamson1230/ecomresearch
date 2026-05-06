@@ -255,7 +255,7 @@ with col1:
         messages = {
             "messages": [
                 SystemMessage(content=system_prompt),
-                HumanMessage(content=query)
+                HumanMessage(content=query)]
         }
         
         # Run agent
