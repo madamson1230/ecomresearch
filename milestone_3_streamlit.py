@@ -274,6 +274,9 @@ with col1:
                 if hasattr(msg, 'tool_calls') and msg.tool_calls:
                     for tool_call in msg.tool_calls:
                         tools_used.append(tool_call['name'])
+            except Exception as e:
+                st.error(f"Error: {str(e)}")
+                st.stop()
         
         # Store message with tools info
         st.session_state.messages.append({
