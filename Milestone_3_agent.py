@@ -10,14 +10,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-os.environ["OPENAI_API_KEY"] = "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"
-
 
 #APIs
-qdrant_url = os.getenv("QDRANT URL", "https://5b37e475-711f-410b-9a99-74f818049901.us-east-1-1.aws.cloud.qdrant.io")
-qdrant_key = os.getenv("QDRANT API Key", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIiwic3ViamVjdCI6ImFwaS1rZXk6ZTM3MmQ3YzctNTBiZi00MTNjLWIxOGEtM2FhZmQ0MGJiNTNjIn0.0TcVmsjuSaVyCfi9eQX2aZ3khgyITEwpt7egVyowrLw")
-openai_key = os.getenv("OpenAI_API Key", "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")
-tav_key = os.getenv("Tavily API Key", "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")  # Get from https://tavily.com
+qdrant_url = os.getenv("QDRANT_URL")
+qdrant_key = os.getenv("QDRANT_API_Key")
+openai_key = os.getenv("OPENAI_API_KEY")
+tav_key = os.getenv("TAVILY_API_KEY") 
 
 qdrant_client = QdrantClient(url=qdrant_url, api_key=qdrant_key)
 embed = OpenAIEmbeddings(model="text-embedding-3-small")
