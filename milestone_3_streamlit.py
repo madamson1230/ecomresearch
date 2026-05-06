@@ -255,8 +255,7 @@ with col1:
         messages = {
             "messages": [
                 SystemMessage(content=system_prompt),
-                HumanMessage(content=f"{query}\n\nIMPORTANT: List all source filenames and URLs at the end.")
-            ]
+                HumanMessage(content=query)
         }
         
         # Run agent
