@@ -268,12 +268,12 @@ with col1:
                 )
                 answer = state["messages"][-1].content
                         
-            # Detect tools used
-            tools_used = []
-            for msg in state["messages"]:
-                if hasattr(msg, 'tool_calls') and msg.tool_calls:
-                    for tool_call in msg.tool_calls:
-                        tools_used.append(tool_call['name'])
+                # Detect tools used
+                tools_used = []
+                for msg in state["messages"]:
+                    if hasattr(msg, 'tool_calls') and msg.tool_calls:
+                        for tool_call in msg.tool_calls:
+                            tools_used.append(tool_call['name'])
             except Exception as e:
                 st.error(f"Error: {str(e)}")
                 st.stop()
