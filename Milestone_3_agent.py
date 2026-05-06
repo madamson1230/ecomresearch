@@ -127,7 +127,8 @@ system_prompt = (
 chat = ChatOpenAI(
     model="gpt-4o-mini",
     temperature=0,
-    api_key=openai_key
+    api_key=openai_key,
+    timeout=60
 ).bind_tools([search_corpus, search_web], tool_choice="required")
 
 # Create the agent
