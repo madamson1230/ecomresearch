@@ -115,7 +115,7 @@ system_prompt = (
     "1) For ANY question, FIRST call search_corpus to find information,\n"
     "2) If search_corpus does not have the answer, OR if asked about current prices/recent news (2024-2025), call search_web,\n"
     "3) Answer in plain paragraphs without numbered lists or bold text,\n"
-    "4) When citing sources, use the actual document filenames at the end.\n"
+    "4) When citing sources, use the actual document source at the end in parentheses.\n"
     "5) Important: Always search before answering.\n\n"
 
     "Answering guidance:\n"
