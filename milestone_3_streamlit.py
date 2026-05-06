@@ -15,7 +15,7 @@ try:
     
     client = QdrantClient(url=url, api_key=key)
     test = client.get_collection("ecommerce_research")
-    st.sidebar.success(f"✅ Connected: {test.vectors_count} vectors")
+    st.sidebar.success(f"✅ Connected: {test.points_count} vectors")
 except Exception as e:
     st.sidebar.error(f"❌ Error: {str(e)}")
 
