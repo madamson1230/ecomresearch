@@ -22,7 +22,7 @@ embed = OpenAIEmbeddings(model="text-embedding-3-small")
 tav_client = TavilyClient(api_key=tav_key) if tav_key else None
 
 @tool
-def search_corpus(query: str, top_k: int = 40):
+def search_corpus(query: str, top_k: int = 10):
     """Search e-commerce research documents for established practices, policies, and strategies."""
     
     # Map filenames to document titles
@@ -55,7 +55,7 @@ def search_corpus(query: str, top_k: int = 40):
         output = qdrant_client.query_points(
             collection_name="ecommerce_research",
             query=query_vector,
-            limit=top_k
+            limit=
         ).points #lots of errors had to debug using chat to figure out to add the word points
 
         
@@ -125,7 +125,7 @@ system_prompt = (
 ) #I opted to create a system prompt after I really struggled to get the agent to call my corpus. The ssytem prompt will be used in content for messages
 
 chat = ChatOpenAI(
-    model="gpt-4o",
+    model="gpt-4o-mini",
     temperature=0,
     api_key=openai_key
 ).bind_tools([search_corpus, search_web], tool_choice="required")
