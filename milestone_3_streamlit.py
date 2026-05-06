@@ -272,6 +272,8 @@ with col1:
                 web_sources_found = []
                 for msg in state["messages"]:
                     if hasattr(msg, 'content') and isinstance(msg.content, str):
+                        if 'Source:' in msg.content:
+                            st.write(f"DEBUG: Found Source in message: {msg.content[:300]}")
                         # Extract PDFs - look for [Source: filename.pdf] pattern
                         pdfs = re.findall(r'\[Source:\s*([^\]]+\.pdf)\]', msg.content)
                         pdf_sources_found.extend(pdfs)
