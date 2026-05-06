@@ -1,5 +1,5 @@
 import os
-from langchain.agents import create_agent
+from langgraph.prebuilt import create_react_agent
 from langchain_openai.embeddings import OpenAIEmbeddings
 from langchain_openai import ChatOpenAI
 from langchain_core.tools import tool
@@ -133,7 +133,7 @@ chat = ChatOpenAI(
 ).bind_tools([search_corpus, search_web], tool_choice="required")
 
 # Create the agent
-graph = create_agent(
+graph = create_react_agent(
     model=chat,
     tools=[search_corpus, search_web]
 )
