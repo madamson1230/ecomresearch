@@ -262,9 +262,7 @@ with col1:
         with st.spinner("Researching..."):
             state = graph.invoke(messages)
             answer = state["messages"][-1].content
-            
-            st.write(answer[:500])
-            
+                        
             # Detect tools used
             tools_used = []
             for msg in state["messages"]:
