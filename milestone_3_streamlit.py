@@ -261,10 +261,15 @@ with col1:
         # Run agent
         with st.spinner("Researching..."):
             try:
+                st.write("DEBUG: Starting agent...")
                 state = graph.invoke(messages)
+                st.write("DEBUG: Agent finished")
                 answer = state["messages"][-1].content
+                st.write("DEBUG: Got answer")
             except Exception as e:
-                st.error(f"Error: {str(e)}")
+                st.error(f"Error: {type(e).__name__}: {str(e)}")
+                import traceback
+                st.code(traceback.format_exc())
                 st.stop()
                         
             # Detect tools used
