@@ -267,18 +267,19 @@ with col1:
                 )
                 answer = state["messages"][-1].content
                 
-                # Extract sources from tool results directly
+# Extract sources from tool results directly
                 pdf_sources_found = []
                 web_sources_found = []
                 for msg in state["messages"]:
-                    if hasattr(msg, 'content') and isinstance(msg.content, str):
-                        if 'Source:' in msg.content:
-                            st.write(f"DEBUG: Found Source in message: {msg.content[:300]}")
+                    st.write(f"DEBUG: Message type: {type(msg).__name__}")
+                    if hasattr(msg, 'content'):
+                        content_str = str(msg.content)
+                        st.write(f"DEBUG: Content preview: {content_str[:200]}")
                         # Extract PDFs - look for [Source: filename.pdf] pattern
-                        pdfs = re.findall(r'\[Source:\s*([^\]]+\.pdf)\]', msg.content)
+                        pdfs = re.findall(r'\[Source:\s*([^\]]+\.pdf)\]', content_str)
                         pdf_sources_found.extend(pdfs)
                         # Extract URLs from tool results
-                        urls = re.findall(r'(?:URL:\s*)?(https?://[^\s\n]+)', msg.content)
+                        urls = re.findall(r'(?:URL:\s*)?(https?://[^\s\n]+)', content_str)
                         web_sources_found.extend(urls)
                 
                 # Append sources to answer if found
