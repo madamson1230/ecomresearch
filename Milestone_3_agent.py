@@ -129,7 +129,7 @@ chat = ChatOpenAI(
     temperature=0,
     api_key=openai_key,
     timeout=60
-).bind_tools([search_corpus, search_web], tool_choice="required")
+).bind_tools([search_corpus, search_web])
 
 # Create the agent
 graph = create_react_agent(
