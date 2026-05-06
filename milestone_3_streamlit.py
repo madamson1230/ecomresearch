@@ -264,7 +264,7 @@ with col1:
             try:
                 state = graph.invoke(
                     messages,
-                    {"recursion_limit": 10, "max_execution_time": 60}
+                    {"recursion_limit": 50, "max_execution_time": 60}
                 )
                 answer = state["messages"][-1].content
                         
