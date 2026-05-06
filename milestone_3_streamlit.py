@@ -255,7 +255,7 @@ with col1:
         messages = {
             "messages": [
                 SystemMessage(content=system_prompt),
-                HumanMessage(content=query)
+                HumanMessage(content=f"{query}\n\nIMPORTANT: End your response with 'Sources: ' followed by the exact filenames or URLs you used.")
             ]
         }
         
