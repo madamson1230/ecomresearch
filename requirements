@@ -1,0 +1,9 @@
+streamlit
+langchain
+langchain-openai
+langchain-core
+langgraph
+qdrant-client
+tavily-py
+python-dotenv
+openai
