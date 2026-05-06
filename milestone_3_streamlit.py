@@ -267,7 +267,7 @@ with col1:
                 )
                 answer = state["messages"][-1].content
                 
-# Extract sources from tool results directly
+                # Extract sources from tool results directly
                 pdf_sources_found = []
                 web_sources_found = []
                 for msg in state["messages"]:
