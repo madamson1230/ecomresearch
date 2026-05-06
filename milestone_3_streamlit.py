@@ -255,7 +255,7 @@ with col1:
         messages = {
             "messages": [
                 SystemMessage(content=system_prompt),
-                HumanMessage(content=f"{query}\n\nIMPORTANT: End your response with:\nSources: filename1.pdf, filename2.pdf, url1.com, url2.com")
+                HumanMessage(content=f"{query}\n\nIMPORTANT: List all source filenames and URLs at the end.")
             ]
         }
         
