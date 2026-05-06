@@ -55,7 +55,7 @@ def search_corpus(query: str, top_k: int = 10):
         output = qdrant_client.query_points(
             collection_name="ecommerce_research",
             query=query_vector,
-            limit=
+            limit=top_k
         ).points #lots of errors had to debug using chat to figure out to add the word points
 
         
